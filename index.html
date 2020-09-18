@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <script src="https://kit.fontawesome.com/8ec398f356.js" crossorigin="anonymous"></script>
+    <title>Usuarios</title>
+</head>
+<body>
+    <header class="bg-dark text-white" style="padding: 10px;">
+        <h1 class="text-center">PHP Crud - Users</h1>
+    </header>
+    
+    <br>
+    <main class="container">
+
+        <nav class="navbar justify-content-between">
+            <span class="navbar-brand">
+
+                <a class="btn btn-success" data-toggle="modal" data-target="#ModalNuevo">Nuevo usuario</a>
+
+                <a id="btnEdit" class="btn btn-warning" data-toggle="modal" data-target="#ModalUpdate">Update usuario</a>
+
+                <a class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete">Quitar usuario</a>
+
+            </span>
+            <form class="form-inline" method="POST">
+                <label>Listar: </label>
+                <select class="custom-select mr-3" id="SelectEstado" style="width: 150px;">
+                    <option value="1" selected>Activos</option>
+                    <option value="0">Inactivos</option>
+                </select>
+
+                <button type="button" id="btnEstado" class="btn btn-primary mr-1">Ver</button>
+                <button type="button" class="btn btn-info"><i class="fas fa-file-excel"></i></button>
+            </form>
+        </nav>
+
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Fecha de creacion</th>
+                    <th scope="col">Ultima modificacion</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Marcar</th>
+                </tr>
+            </thead>
+            <tbody id="tbodydatos"></tbody>
+        </table>
+    
+    </main>
+
+    <!-- Modal Nuevo usuario -->
+    <div class="modal fade" id="ModalNuevo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="inpAddUser">UserName</label>
+                            <input type="text" class="form-control" id="inpAddUser">
+                        </div>
+                        <div class="form-group modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" id="btnAdd" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Modificar usuario -->
+    <div class="modal fade" id="ModalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modificar usuarios</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div id="dataEdit" class="form-group">
+                            
+                        </div>
+
+                        <div class="form-group modal-footer mt-3">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button id="btnUp" class="btn btn-primary">Actualizar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Delete usuario -->
+    <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Quitar usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Estas seguro de eliminar los registros seleccionados?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" id="btnDelete" class="btn btn-primary">Si</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="eventos.js"></script>
+</body>
+</html>
