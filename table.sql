@@ -29,7 +29,7 @@ CREATE TABLE `usuarios` (
   `updateat` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `estado` bit(1) DEFAULT b'1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'arleth','2020-10-08 23:25:33','2020-10-08 18:25:33',''),(2,'jason','2020-10-08 23:31:32','2020-10-08 18:31:32',''),(3,'abram','2020-10-08 23:31:37','2020-10-08 18:31:37','');
+INSERT INTO `usuarios` VALUES (1,'arleth','2020-10-08 23:25:33','2020-10-08 18:25:33',''),(2,'jason','2020-10-08 23:31:32','2020-11-16 13:31:56','\0'),(3,'abram','2020-10-08 23:31:37','2020-10-08 18:31:37',''),(4,'diana01','2020-11-16 17:31:50','2020-11-16 13:31:56','\0'),(5,'diana','2020-11-16 18:31:26','2020-11-16 13:31:26','');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-08 18:39:41
+-- Dump completed on 2020-11-16 18:35:13
