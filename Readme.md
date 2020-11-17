@@ -24,4 +24,4 @@ mysql -u root -h localhost -p < table.sql
 ```
 
 ## Uso
-Ingresar al localhost
+Ingresar al localhost/php-crud-usuarios
